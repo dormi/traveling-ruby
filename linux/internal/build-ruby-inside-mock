@@ -179,8 +179,9 @@ else
 	FFILIBDIR=/usr/local/override/lib64
 fi
 run cp $LIBDIR/libz.so.1 /tmp/ruby/lib/
+yum install -y compat-libtermcap
 run cp $LIBDIR/libtermcap.so.2 /tmp/ruby/lib/
-run cp $USRLIBDIR/libreadline.so.5 /tmp/ruby/lib/
+run cp $LIBDIR/libreadline.so.6 /tmp/ruby/lib/
 run cp $FFILIBDIR/libffi.so.6 /tmp/ruby/lib/
 run cp /system/ca-bundle.crt /tmp/ruby/lib/
 run cp /system/restore_environment.rb /tmp/ruby/lib/
@@ -201,7 +202,7 @@ echo $GEM_EXTENSION_API_VERSION > /tmp/ruby/info/GEM_EXTENSION_API_VERSION
 # Install gem-specific library dependencies.
 run mkdir -p /tmp/ruby/lib/ruby/gems/$RUBY_COMPAT_VERSION/deplibs/$GEM_PLATFORM
 pushd /tmp/ruby/lib/ruby/gems/$RUBY_COMPAT_VERSION/deplibs/$GEM_PLATFORM
-run mkdir curses && run cp $USRLIBDIR/libncursesw.so.5 curses/
+run mkdir curses && run cp $LIBDIR/libncursesw.so.5 curses/
 popd
 
 echo "Patching rbconfig.rb"
@@ -319,7 +320,7 @@ if $SANITY_CHECK_OUTPUT; then
 	header "Sanity checking build output"
 	(
 		SYSTEM_LIBRARIES="(linux-gate|linux-vdso|libpthread|librt|libdl|libcrypt|libm|libc"
-		SYSTEM_LIBRARIES="$SYSTEM_LIBRARIES|ld-linux.*|libutil|libnsl|libgcc_s|libstdc\+\+"
+		SYSTEM_LIBRARIES="$SYSTEM_LIBRARIES|ld-linux.*|libutil|libnsl|libgcc_s|libstdc\+\+|libfreebl3|libtinfo"
 		SYSTEM_LIBRARIES="$SYSTEM_LIBRARIES|libz|libtermcap|libreadline|libncursesw|libffi)\.so"
 		ERROR=false
 		set -o pipefail

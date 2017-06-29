@@ -59,7 +59,14 @@ run yum install -y @development-tools gcc gcc-c++ wget sudo zlib-devel \
 run mkdir -p /ccache
 echo
 
-
+header "Installing m4..."
+wget http://ftp.gnu.org/gnu/m4/m4-latest.tar.gz
+tar zxvf m4*
+cd m4*
+./configure
+make
+make install
+export PATH=/usr/local/bin:$PATH
 
 header "Installing autoconf..."
 if [[ ! -e /usr/local/override/bin/autoconf ]]; then
@@ -273,6 +280,7 @@ fi
 echo
 
 header "Installing libssh2"
+yum install -y openssl-devel
 if [[ ! -e /usr/local/override/lib/libssh2.a ]]; then
 	download_and_extract libssh2-$LIBSSH2_VERSION.tar.gz \
 		http://www.libssh2.org/download/libssh2-$LIBSSH2_VERSION.tar.gz

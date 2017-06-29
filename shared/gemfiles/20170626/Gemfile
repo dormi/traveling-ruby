@@ -1,0 +1,22 @@
+source 'https://rubygems.org'
+
+#gem 'fast-stemmer'
+#gem 'hitimes'
+#gem 'redcarpet'
+#gem 'snappy'
+#gem 'pg'
+#gem 'mysql2'
+#gem 'puma', :platforms => :ruby
+#gem 'kgio', :platforms => :ruby
+#gem 'raindrops', :platforms => :ruby
+#gem 'unicorn', :platforms => :ruby
+#gem 'curses', :platforms => :ruby
+gem 'nokogiri', '1.7.2'
+gem 'RedCloth', '4.3.1'
+gem 'rinku'
+gem 'sqlite3'
+gem 'mysql2', '0.3.18'
+gem 'unicorn', '4.9.0'
+gem 'bcrypt', '3.1.10'
+gem 'therubyracer', '0.12.3'
+# gem 'libv8', '3.16.14.19' # NOTE: libv8 is still taken from the building host, even if added here.
