@@ -37,3 +37,4 @@ mkdir -p /etc/container_environment /etc/workaround-docker-2267
 ln -s /etc/workaround-docker-2267 /cte
 rm -rf /image /tmp/*
 yum clean all
+

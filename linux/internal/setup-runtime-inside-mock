@@ -68,6 +68,9 @@ make
 make install
 export PATH=/usr/local/bin:$PATH
 
+header "Installing perl modules"
+yum install perl-core
+
 header "Installing autoconf..."
 if [[ ! -e /usr/local/override/bin/autoconf ]]; then
 	download_and_extract autoconf-$AUTOCONF_VERSION.tar.gz \

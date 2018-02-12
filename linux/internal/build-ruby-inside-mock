@@ -179,8 +179,7 @@ else
 	FFILIBDIR=/usr/local/override/lib64
 fi
 run cp $LIBDIR/libz.so.1 /tmp/ruby/lib/
-yum install -y compat-libtermcap
-run cp $LIBDIR/libtermcap.so.2 /tmp/ruby/lib/
+run cp $LIBDIR/libtermcap.so /tmp/ruby/lib/
 run cp $LIBDIR/libreadline.so.6 /tmp/ruby/lib/
 run cp $FFILIBDIR/libffi.so.6 /tmp/ruby/lib/
 run cp /system/ca-bundle.crt /tmp/ruby/lib/
@@ -274,6 +273,7 @@ if [[ "$DEBUG_SHELL" = after ]]; then
 fi
 
 # Strip binaries and remove unnecessary files.
+run rm -f /tmp/ruby/lib/libtermcap.so
 run strip --strip-all /tmp/ruby/bin/ruby
 (
 	set -o pipefail

@@ -1,3 +1,3 @@
-FROM centos:centos6
+FROM centos:centos7
 ADD image /image
 RUN /image/install.sh
